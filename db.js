@@ -1,5 +1,7 @@
 const mongoose = require("mongoose");
-mongoose.connect("mongodb://localhost:27017/course"); // <----ERROR !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+mongoose.connect(
+  process.env.MONGO_URL
+);
 mongoose.connection.on("error", (err) => {
     console.log(err);
 });
