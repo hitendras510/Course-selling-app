@@ -62,10 +62,15 @@ if(!user){
 }
 });
 
-userRouter.get("/purchases", (req, res) => {
+userRouter.get("/purchases", async (req, res) => {
+const userId = req.userId;
 
+const purchases = await purchaseModel.find({
+  userId,
+})
   res.json({
     message: "User purchases successfully",
+    purchases
   });
 });
 module.exports = {
